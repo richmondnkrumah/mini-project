@@ -1,16 +1,16 @@
-import { auth } from '@/utils/auth'
-import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
+import { createClient } from '@/utils/supabase/server'
 
 type Props = {}
 
 
 const ResponsiveMenu = async (props: Props) => {
-  const session = await auth()
-  console.log(session, 'sesssssion')
+  const supabase = createClient()
+  const { data, error } = await supabase.auth.getUser()
 
-  if (!session?.user) return (
+
+  if (error || !data?.user) return (
     <div className="dropdown dropdown-end lg:hidden">
       <div
         tabIndex={0}

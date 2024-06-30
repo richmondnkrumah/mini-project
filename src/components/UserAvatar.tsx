@@ -1,12 +1,16 @@
 import Link from 'next/link'
-import React from 'react'
-import { auth, signOut } from '@/utils/auth'
+import React, { useEffect, useState } from 'react'
+import { createClient } from '@/utils/supabase/server'
+import { handleSignOut } from '@/utils/actions'
+
 
 const UserAvatar = async () => {
-  const session = await auth()
-  console.log(session, 'sesssssion')
+  const supabase = createClient()
 
-  if (!session?.user) return (
+  const { data, error } = await supabase.auth.getUser()
+  
+
+  if (error || !data?.user) return (
     <Link href={'/account'}>
       <div
         tabIndex={0}
@@ -19,7 +23,7 @@ const UserAvatar = async () => {
         </div>
       </div>
     </Link>)
-
+  console.log(data,"this is supabase data user")
   return (
     <div className="dropdown dropdown-end">
       <div
@@ -30,8 +34,7 @@ const UserAvatar = async () => {
         <div className="w-10 rounded-full">
           <img
             alt="CSS"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-          />
+                        />
         </div>
       </div>
       <ul
@@ -47,10 +50,7 @@ const UserAvatar = async () => {
           <Link href={"#"}>Settings</Link>
         </li>
         <li>
-          <form action={async () => {
-            "use server"
-            await signOut()
-          }}>
+          <form action={handleSignOut}>
             <button type="submit">Log out</button>
           </form>
         </li>
