@@ -1,16 +1,22 @@
 "use client";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useJobStore } from "@/store/jobContext";
 import Filters from "@/components/Filters";
 import JobList from "@/components/JobList";
 import JobDetail from "@/components/JobDetail";
 import { JOB } from "@/types/job";
 import { useRouter } from "next/navigation";
-
 type Props = {};
 
 const HomePage = (props: Props) => {
   const router = useRouter();
+  const [testd,setTestd] = useState({})
+
+  // useEffect(() => {
+    
+   
+  // },[])
+  
   const [searchData, setSearchData] = useState({
     jobTitle: "",
     jobLocation: "",
@@ -40,7 +46,9 @@ const HomePage = (props: Props) => {
       setActiveJob(jobs?.find((currJob) => currJob.id === id));
     }
   };
+
   console.log(jobs, "this is the jobs ");
+  console.log("testD",testd)
   return (
     <main className=" h-full mx-3 grow">
       <form
