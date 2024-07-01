@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { createClient } from '@/utils/supabase/server'
+import { handleSignOut } from '@/utils/actions'
 
 type Props = {}
 
@@ -75,7 +76,9 @@ const ResponsiveMenu = async (props: Props) => {
           <Link href={"#"}>Settings</Link>
         </li>
         <li>
-          <Link href={"#"}>Sign Out</Link>
+        <form action={handleSignOut}>
+            <button type="submit">Log out</button>
+          </form>
         </li>
       </ul>
     </div>
