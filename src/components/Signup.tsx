@@ -11,6 +11,10 @@ type Props = {
 
 }
 
+const onSubmitHandler = () => {
+  return false
+}
+
 
 const Signup = ({ email, password, passwordConfirm, changeHandler }: Props) => {
   return (
