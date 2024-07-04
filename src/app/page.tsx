@@ -1,3 +1,5 @@
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 import Link from 'next/link'
 import React from 'react'
 
@@ -5,16 +7,19 @@ type Props = {}
 
 const Index = (props: Props) => {
   return (
-    <main>Index
-      <div className='h-50 w-fit px-10 bg-slate-400 text-center'>
-        
-      <Link href={"/account"} >Account Page</Link>
-      </div>
-      <div className='h-50 w-fit px-10 bg-slate-400 text-center'>
+    <>
+      <Header isLandingPage={true} />
+      <main className='grow pt-20 flex flex-col gap-20'>
+        <div className='text-center flex flex-col items-center gap-8 '>
+          <h1 className='text-7xl'>Unlock Your <b className='text-purple-500'>Career potential</b> <br></br>with NicheJobs</h1>
+          <Link className='h-14 px-8 rounded-lg bg-purple-500 w-fit flex items-center text-white ' href="/home">Get Started</Link>
+        </div>
 
-      <Link href={"/home"} >Home Page</Link>
-      </div>
-    </main>
+      </main>
+      <Footer />
+
+    </>
+
   )
 }
 
