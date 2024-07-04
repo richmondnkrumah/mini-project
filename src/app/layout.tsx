@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import "./globals.css";
 
 type Props = {}
@@ -10,7 +10,9 @@ const layout = ({
 }>) => {
   return (
     <html>
-      <body>{children}</body>
+      <body className="flex flex-col min-h-[100dvh]">
+        {children}
+        </body>
     </html>
   )
 }
