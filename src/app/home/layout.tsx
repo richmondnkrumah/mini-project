@@ -6,14 +6,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
+
   return (
-    <html lang="en">
-      <body className="flex flex-col min-h-[100dvh]">
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <>
+      <Header isLandingPage={false} />
+      {children}
+      <Footer />
+    </>
   );
 }
