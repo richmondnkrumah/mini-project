@@ -1,8 +1,11 @@
+'use client'
 import Form from '@/components/Form'
+import { useSearchParams } from 'next/navigation'
 
 type Props = {}
 
 const Account = (props: Props) => {
+  const params = useSearchParams()
   return (
     <main className='flex min-h-[100dvh] bg-slate-100 justify-center items-center'>
       <div className='w-fit'>
@@ -15,7 +18,7 @@ const Account = (props: Props) => {
               <h2 className=' font-semibold text-3xl '>Welcome Back</h2>
               <p className='text-slate-500'>Welcome Back, Please Enter your details</p>
             </div>
-            <Form />
+            <Form mode={params.get('mode') as 'login' | 'create' | null} />
           </div>
         </div>
       </div>
