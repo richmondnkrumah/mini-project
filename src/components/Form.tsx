@@ -8,10 +8,12 @@ import Login from './Login'
 import Signup from './Signup'
 import { authWithGithub, authWithGoogle, signInwithCredentials } from '@/utils/actions'
 
-type Props = {}
+type Props = {
+  mode: "login" | "create" | null
+}
 
-const Form = (props: Props) => {
-  const [accountMode, setAccountMode] = useState<'login' | 'create'>('login')
+const Form = ({mode}: Props) => {
+  const [accountMode, setAccountMode] = useState<'login' | 'create'>( mode ?? 'login')
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const [passwordConfirm, setPasswordConfirm] = useState<string>("")
