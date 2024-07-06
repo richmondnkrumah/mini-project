@@ -9,9 +9,9 @@ const Header = ({ isLandingPage }: { isLandingPage: boolean }) => {
 
   return (
     <header>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 px-4">
         <div className="navbar-start">
-          <Link href={"/"} className="btn btn-ghost text-xl hover:bg-transparent">NicheJobs</Link>
+          <Link href={"/"} className="btn btn-ghost text-xl hover:bg-transparent text-[#660066]">NicheJobs</Link>
         </div>
 
         <div className="navbar-end ">
@@ -19,12 +19,12 @@ const Header = ({ isLandingPage }: { isLandingPage: boolean }) => {
           {
             isLandingPage ?
               <div className='hidden lg:flex gap-4'>
-                <Link className='h-10 border rounded-lg w-fit px-6 text-purple-500 border-purple-500 flex items-center' href={"/account?mode=login"}>Login</Link>
-                <Link className='h-10 border rounded-lg w-fit px-6 text-white bg-purple-500 flex items-center' href={"/account?mode=create"}>Sign Up</Link>
+                <Link className='h-12 border rounded-lg w-fit px-7 text-[#660066] border-[#660066] flex items-center font-bold' href={"/account?mode=login"}>Login</Link>
+                <Link className='h-12 border border-[#660066] rounded-lg w-fit px-7 text-white bg-[#660066] flex items-center font-bold' href={"/account?mode=create "}>Sign Up</Link>
               </div>
               :
               <div className="hidden lg:flex ">
-                <button className="dropdown dropdown-bottom dropdown-end btn btn-ghost btn-circle">
+                <button className="dropdown dropdown-bottom dropdown-end btn btn-ghost btn-circle ">
                   <div className="indicator" tabIndex={0} role="button">
                     <svg
                       viewBox="0 0 24 24"
