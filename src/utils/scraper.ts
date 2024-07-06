@@ -23,6 +23,7 @@ class WebScraper {
     }
   }
 
+
   async scrapeIndeed(): Promise<JOB[]> {
     if (!this.browser) {
       throw new Error('Browser is not initialized. Call init() first.');
@@ -33,7 +34,7 @@ class WebScraper {
     const query = `q=${encodeURIComponent(this.jobTitle)}${this.jobLocation ? `&l=${encodeURIComponent(this.jobLocation)}` : ''}`;
     const url = `${baseUrl}?${query}`;
 
-    const jobs: JOB[] = [];
+    const jobs: JOB[]  = [];
     let hasNextPage = true;
     let start = 0;
 
@@ -57,7 +58,7 @@ class WebScraper {
           const url = urlElement ? `https://www.indeed.com${urlElement.getAttribute('href')}` : '';
           const id = title + company
 
-          return {
+          return (title !== '' && company !== '') ? {
             title,
             company,
             location,
@@ -65,11 +66,11 @@ class WebScraper {
             datePosted,
             url,
             id
-          };
+          }: null
         });
       });
-      console.log(newJobs,"jobser")
-      jobs.push(...newJobs);
+      // console.log(newJobs,"jobser")
+      jobs.push(...(newJobs.filter(job => job !== null)));
 
       // hasNextPage = await page.evaluate(() => {
       //   const nextButton = document.querySelector('a[aria-label="Next Page"]');
