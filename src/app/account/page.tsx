@@ -11,7 +11,7 @@ const Account = (props: Props) => {
       <div className='w-fit'>
         <div className="card bg-base-100 shadow-xl">
           <div className='card-title justify-center'>
-            <h1 className='text-center'>ICON</h1>
+            <h1 className='text-center text-[#660066]'>NicheJobs</h1>
           </div>
           <div className="card-body w-[480px] gap-5">
             <div className='text-center'>
