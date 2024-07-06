@@ -6,10 +6,10 @@ type Props = {
 
 };
 
-const Job = ({ jobData,activeJobHandler }: Props) => {
+const Job = ({ jobData, activeJobHandler }: Props) => {
   return (
-    <div onClick={() => activeJobHandler(jobData.id)} className="card cursor-pointer min-w-fit border border-opacity-[10%]  border-[var(--currentColor)] card-compact p-3">
-      <div className="card-title  justify-between">
+    <div onClick={() => activeJobHandler(jobData.id)} className="card rounded-lg cursor-pointer min-w-fit border border-[#660066] card-compact p-3">
+      <div className="card-title justify-between">
         <span>{jobData.title}</span>
         <div className="btn btn-ghost ">
           <svg
@@ -40,12 +40,19 @@ const Job = ({ jobData,activeJobHandler }: Props) => {
         </div>
       </div>
       <div className="card-body ">
-        <span>{jobData.company}</span>
-        <span>N/A</span>
-        
+        <div className="flex flex-col gap-1 font-bold">
+          <span>{jobData.company}</span>
+          <span>{jobData.location}</span>
+
+        </div>
+        <div>
+          {
+            jobData.summary.slice(0,2).map(item => <li>{item}</li>)
+          }
+        </div>
       </div>
       <div className="flex justify-end">
-        <p>Posted {jobData.datePosted}</p>
+        <p>{jobData.datePosted.replace("Posted", "")}</p>
       </div>
     </div>
   );
