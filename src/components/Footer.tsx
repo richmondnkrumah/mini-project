@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 type Props = {}
@@ -6,10 +7,7 @@ const Footer = (props: Props) => {
   return (
     <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
           <nav className="grid grid-flow-col gap-4">
-            <a className="link link-hover">About us</a>
-            <a className="link link-hover">Contact</a>
-            <a className="link link-hover">FAQ</a>
-            <a className="link link-hover">Terms of Use</a>
+            <Link href={"/about"} className="link link-hover text-lg">About us</Link>
           </nav>
           <nav>
             <div className="grid grid-flow-col gap-4">
