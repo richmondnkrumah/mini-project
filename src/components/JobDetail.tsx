@@ -8,7 +8,7 @@ const JobDetail = ({ ActiveJob, isModal }: {ActiveJob?: JOB,isModal: boolean} ) 
       <h2 className="text-xl font-bold mb-2">{ActiveJob.title}</h2>
       <p className="mb-2">{ActiveJob.company}</p>
       <div>
-         {ActiveJob.summary.map(item => <li>{item}</li>)}
+         {ActiveJob.summary.map(item => <li key={item}>{item}</li>)}
           </div>
       <p className="text-gray-500">{ActiveJob.datePosted.replace("Posted","")}</p>
     </div>

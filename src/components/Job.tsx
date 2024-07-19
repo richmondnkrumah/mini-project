@@ -47,7 +47,7 @@ const Job = ({ jobData, activeJobHandler }: Props) => {
         </div>
         <div>
           {
-            jobData.summary.slice(0,2).map(item => <li>{item}</li>)
+            jobData.summary.slice(0,2).map(item => <li key={item}>{item}</li>)
           }
         </div>
       </div>
