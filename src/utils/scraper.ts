@@ -45,7 +45,7 @@ class WebScraper {
         return jobElements.map(jobElement => {
           const titleElement = jobElement.querySelector('div h2.jobTitle a span');
           const companyElement = jobElement.querySelector('div.company_location div span[data-testid="company-name"]');
-          const locationElement = jobElement.querySelector('div.company_location div span[data-testid="text-location"]');
+          const locationElement = jobElement.querySelector('div.company_location div[data-testid="text-location"]');
           const summaryElements = jobElement.querySelectorAll('div.jobMetaDataGroup ul li');
           const datePostedElement = jobElement.querySelector('div.jobMetaDataGroup span[data-testid="myJobsStateDate"]');
           const urlElement = jobElement.querySelector('div h2.jobTitle a');
@@ -56,7 +56,8 @@ class WebScraper {
           const summary = Array.from(summaryElements).map(el => el.textContent || '');
           const datePosted = datePostedElement?.textContent || '';
           const url = urlElement ? `https://www.indeed.com${urlElement.getAttribute('href')}` : '';
-          const id = title + company
+          const id = title + company+location+datePosted+summary[0]
+          const isRemote = location.includes('Remote')
 
           return (title !== '' && company !== '') ? {
             title,
@@ -65,7 +66,8 @@ class WebScraper {
             summary,
             datePosted,
             url,
-            id
+            id,
+            isRemote
           }: null
         });
       });
