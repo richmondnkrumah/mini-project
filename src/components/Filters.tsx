@@ -1,11 +1,15 @@
 'use client'
+import { useJobStore } from "@/store/jobContext";
 import {useState} from "react";
 
 type Props = {};
 
 const Filters = (props: Props) => {
   const [remoteToggle,setRemoteToggle] = useState<boolean>(false)
+  const {setRemoteOnlyJobs,jobs} = useJobStore()
   const setRemoteHandler = () => {
+    console.log(jobs,"jobs from remote handler")
+    setRemoteOnlyJobs(!remoteToggle)
     setRemoteToggle(prevToggle => !prevToggle)
   }
   return (
@@ -28,28 +32,6 @@ const Filters = (props: Props) => {
             </li>
             <li>
               <a>Full Time</a>
-            </li>
-          </ul>
-        </div>
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost m-1">
-          Employees
-          </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a>1 - 50</a>
-            </li>
-            <li>
-              <a>50 - 100</a>
-            </li>
-            <li>
-              <a>100 - 200</a>
-            </li>
-            <li>
-              <a>more than 200</a>
             </li>
           </ul>
         </div>
