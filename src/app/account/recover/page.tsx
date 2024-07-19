@@ -2,7 +2,7 @@
 import { ChangeEvent, useState } from 'react'
 type Props = {}
 
-const recoverAccount = (props: Props) => {
+const RecoverAccount = (props: Props) => {
   const [email, setEmail] = useState<string>("")
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
@@ -28,4 +28,4 @@ const recoverAccount = (props: Props) => {
   )
 }
 
-export default recoverAccount
+export default RecoverAccount
