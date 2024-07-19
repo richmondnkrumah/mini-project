@@ -6,4 +6,5 @@ export type JOB = {
   datePosted: string;
   url: string;
   id: string
+  isRemote: boolean 
 };
