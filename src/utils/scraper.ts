@@ -72,7 +72,8 @@ class WebScraper {
         });
       });
       // console.log(newJobs,"jobser")
-      jobs.push(...(newJobs.filter(job => job !== null)));
+      const filteredJob = newJobs.filter(job => job !== null) as JOB[]
+      jobs.push(...(filteredJob));
 
       // hasNextPage = await page.evaluate(() => {
       //   const nextButton = document.querySelector('a[aria-label="Next Page"]');
