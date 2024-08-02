@@ -5,7 +5,7 @@ type Props = {}
 
 const Footer = (props: Props) => {
   return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded mt-10">
           <nav className="grid grid-flow-col gap-4">
             <Link href={"/about"} className="link link-hover text-lg">About us</Link>
           </nav>
