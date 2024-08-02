@@ -11,11 +11,11 @@ export async function POST(request: Request) {
   }
   console.log(jobTitle, jobLocation, "data sent to server");
 
-  const scraper = new WebScraper(jobTitle, jobLocation);
+  const scraper = new WebScraper();
   await scraper.init();
 
   try {
-    const results = await scraper.scrapeIndeed();
+    const results = await scraper.scrapeIndeed(jobTitle,jobLocation);
     console.log(results, "this is results from server");
     return Response.json({ data: results, error: null });
   } catch (error) {
