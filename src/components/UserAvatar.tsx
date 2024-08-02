@@ -23,7 +23,6 @@ const UserAvatar = async () => {
         </div>
       </div>
     </Link>)
-  console.log(data,"this is supabase data user")
   return (
     <div className="dropdown dropdown-end">
       <div
@@ -32,7 +31,7 @@ const UserAvatar = async () => {
         className="btn btn-ghost btn-circle avatar"
       >
         <div className="w-10 rounded-full">
-          <img
+          <img src={data.user.user_metadata?.picture}
             alt="CSS"
                         />
         </div>
