@@ -25,7 +25,7 @@ const JobList = ({ jobResults, activeJobHandler }: Props) => {
   console.log(JobList, "this is a jobResults");
   // const paginatedJobResults = paginate(10, jobResults);
   return (
-    <section className="flex flex-col gap-5">
+    <section className="flex flex-col min-w-[48%] gap-5">
       {jobResults &&
         jobResults?.map((job) => (
           <Job activeJobHandler={activeJobHandler} key={job.id} jobData={job} />
