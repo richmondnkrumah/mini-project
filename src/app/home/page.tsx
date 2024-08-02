@@ -189,11 +189,11 @@ const HomePage = (props: Props) => {
       }
      
       {jobs && (
-        <section className="flex flex-col w-[90%] mx-auto">
+        <section className="flex flex-col w-full mx-auto">
           <Filters />
-          <div className="flex gap-5 justify-between relative">
+          <div className="flex gap-[2%] max-w-[1320px] self-center justify-between relative">
             <JobList jobResults={jobs} activeJobHandler={setActiveJobHandler} />
-            <JobDetail isModal={true} ActiveJob={activeJob} />
+            <JobDetail ActiveJob={activeJob ?? jobs[0]} />
           </div>
         </section>
       )}
