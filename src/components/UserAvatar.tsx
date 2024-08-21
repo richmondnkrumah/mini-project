@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
 import { createClient } from '@/utils/supabase/server'
 import { handleSignOut } from '@/utils/actions'
+import ProfileSVG from '@/assets/profile.svg'
+import Image from 'next/image'
 
 
 const UserAvatar = async () => {
@@ -15,10 +16,13 @@ const UserAvatar = async () => {
       <div
         tabIndex={0}
         className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img
-            alt="CSS"
-            src="../../imger.jpg"
+        <div className="w-10 rounded-full bg-gray-200 p-1">
+          <Image 
+          
+            alt="guest profile image"
+            src={ProfileSVG}
+            height={25}
+            width={25}
           />
         </div>
       </div>
