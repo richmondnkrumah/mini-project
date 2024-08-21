@@ -1,4 +1,4 @@
-import puppeteer, { Browser, Page } from 'puppeteer-core';
+import puppeteer, { Browser, Page } from 'puppeteer';
 import type { JOB } from '@/types/job';
 
 
@@ -6,15 +6,13 @@ import type { JOB } from '@/types/job';
 class WebScraper {
   private browser: Browser | null = null;
   async init(): Promise<void> {
-    this.browser = await puppeteer.launch({ executablePath: '/usr/bin/google-chrome-stable', headless: false });
-  }
+    this.browser = await puppeteer.launch() }
 
   async close(): Promise<void> {
     if (this.browser) {
       await this.browser.close();
     }
   }
-
 
   async scrapeIndeed(jobTitle: string, jobLocation: string | null): Promise<JOB[]> {
     if (!this.browser) {
@@ -66,7 +64,6 @@ class WebScraper {
           } : null
         });
       });
-      // console.log(newJobs,"jobser")
       const filteredJob = newJobs.filter(job => job !== null) as JOB[]
       jobs.push(...(filteredJob));
 
@@ -92,45 +89,11 @@ class WebScraper {
     const baseUrl = 'https://indeed.com'
     await page.goto(baseUrl + url)
 
-    //     const finalDetails = await page.$$eval(".jobsearch-JobComponent", details => {
-    //       return details.map(detail => {
-    //         const titleElement = detail.querySelector('div.jobsearch-JobInfoHeader-title-container h1 span');
-    //         const companyElement = detail.querySelector(' div[data-testid="inlineHeader-companyName"] > span > a')
-    //         const locationElement = document.querySelector('div[data-testid="inlineHeader-companyLocation"] > div')
-    //         console.log(companyElement,"companyElement",locationElement)
-    //         const salaryAndJobElement = detail.querySelector('div[data-testid="jobsearch-OtherJobDetailsContainer"] > div > div')
-    //         const applyLinkElement = detail.querySelector('#applyButtonLinkContainer > div > div > button')
-    //         const descriptionElement = detail.querySelector('#jobDescriptionText')
-
-    //         const title = titleElement?.textContent || ''
-    //         const companyName = companyElement?.textContent || ''
-    //         const companyLink = companyElement?.getAttribute('href')
-    //         const location = locationElement?.textContent || ''
-    //         const salary = salaryAndJobElement
-    //         // const jobType = salaryAndJobElement[1].textContent || ''
-    //         const applyLink = applyLinkElement?.getAttribute('href')
-    //         const description = descriptionElement?.textContent || ''
-    // //title, salary, location,jobtype and companyname
-
-    //         return {
-    //           title,
-    //           companyName,
-    //           companyLink,
-    //           location,
-    //           salary,
-    //           // jobType,
-    //           applyLink,
-    //           description
-    //         }
-    //       })
-    //     })
-    // const title = await page.waitForSelector('div.jobsearch-JobInfoHeader-title-container h1 span')
-    // const te = title?.evaluate(e => e.textContent)
     const titleElement = await page.waitForSelector('div.jobsearch-JobInfoHeader-title-container h1 span');
     const companyElement = await page.waitForSelector(' div[data-testid="inlineHeader-companyName"] > span > a')
     const locationElement = await page.waitForSelector('div[data-testid="inlineHeader-companyLocation"] > div')
-    console.log(companyElement, "companyElement", locationElement)
-    const salaryAndJobElement =await page.waitForSelector('div[data-testid="jobsearch-OtherJobDetailsContainer"] > div > div')
+     
+    const salaryAndJobElement =await page.waitForSelector('div[data-testid="jobsearch-OtherJobDetailsContainer"] > div > div > span')
     const applyLinkElement =await page.waitForSelector('#applyButtonLinkContainer > div > div > button')
     const descriptionElement =await page.waitForSelector('#jobDescriptionText')
 
@@ -138,7 +101,7 @@ class WebScraper {
     const companyName = await companyElement?.evaluate(element => element.textContent)
     const companyLink = await companyElement?.evaluate(element => element.getAttribute('href'))
     const location = await locationElement?.evaluate(element => element.textContent)
-    const salary = salaryAndJobElement
+    const salary = await salaryAndJobElement?.evaluate(element => element.textContent)
     // const jobType = salaryAndJobElement[1].textContent || ''
     const applyLink = await applyLinkElement?.evaluate(element => element.getAttribute('href'))
     const description = await descriptionElement?.evaluate(element => element.textContent)
