@@ -10,3 +10,13 @@ export type JOB = {
   applyLink?: string,
   detailsLink: string
 };
+
+export type JOBDETAILS = {
+  title: string,
+  companyName: string,
+  companyLink: string,
+  location: string,
+  salary: string,
+  applyLink: string,
+  description: string
+}
