@@ -3,10 +3,9 @@ import React from 'react'
 import { createClient } from '@/utils/supabase/server'
 import { handleSignOut } from '@/utils/actions'
 
-type Props = {}
 
 
-const ResponsiveMenu = async (props: Props) => {
+const ResponsiveMenu = async () => {
   const supabase = createClient()
   const { data, error } = await supabase.auth.getUser()
 

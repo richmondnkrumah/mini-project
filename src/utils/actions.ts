@@ -18,7 +18,6 @@ export const authWithGoogle = async () => {
     redirect(data.url) // use the redirect API for your server framework
   }
   
-  
 }
 
 export const authWithGithub = async () => {
@@ -59,8 +58,7 @@ export const signInwithCredentials = async (formData: FormData) => {
 export const handleSignUp = async (formData: FormData) => {
   const supabase = createClient()
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
+  // type-casting to escape ts errors
   const data = {
     email: formData.get('email') as string,
     password: formData.get('password') as string,

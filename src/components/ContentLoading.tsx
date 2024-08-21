@@ -1,8 +1,6 @@
 import React from 'react'
 
-type Props = {}
-
-const ContentLoading = (props: Props) => {
+const ContentLoading = () => {
   return (
     <div className="loader">
     <div className="box box-1 ">

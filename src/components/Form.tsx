@@ -1,12 +1,11 @@
 'use client'
 import { ChangeEvent, useState } from 'react'
-
 import GOOGLE_ICON from '@/assets/google.svg'
 import GITHUB_ICON from '@/assets/github.svg'
 import Image from 'next/image'
 import Login from './Login'
 import Signup from './Signup'
-import { authWithGithub, authWithGoogle, signInwithCredentials } from '@/utils/actions'
+import { authWithGithub, authWithGoogle} from '@/utils/actions'
 
 type Props = {
   mode: "login" | "create" | null

@@ -8,7 +8,7 @@ const Filters = (props: Props) => {
   const [remoteToggle,setRemoteToggle] = useState<boolean>(false)
   const {setRemoteOnlyJobs,jobs} = useJobStore()
   const setRemoteHandler = () => {
-    console.log(jobs,"jobs from remote handler")
+     
     setRemoteOnlyJobs(!remoteToggle)
     setRemoteToggle(prevToggle => !prevToggle)
   }

@@ -9,9 +9,8 @@ import { useRouter } from "next/navigation";
 import ServerDownIllustration from '@/assets/serverdown.svg'
 import Image from "next/image";
 import ContentLoading from "@/components/ContentLoading";
-type Props = {};
 
-const HomePage = (props: Props) => {
+const HomePage = () => {
   const router = useRouter();
 
   const [jobTitle, setjobTitle] = useState<string>("")
@@ -51,7 +50,7 @@ const HomePage = (props: Props) => {
         method: 'POST',
         body: formData,
       });
-      console.log(response, "i dont know bro")
+       
       const results = await response.json()
       if (results.error) {
         setErrorJobResults(results.error)
@@ -59,7 +58,7 @@ const HomePage = (props: Props) => {
       else {
         setNewJobResults(results.data)
       }
-      console.log(results, "Response from the funcking Scraper")
+       
     } catch (error) {
       // Handle error
       setErrorJobResults("Error Submitting Form")
@@ -70,7 +69,7 @@ const HomePage = (props: Props) => {
     }
 
   }
-  console.log(jobs, "this is the jobs ");
+   
   return (
     <main className="h-full mx-3 grow flex flex-col">
       <form

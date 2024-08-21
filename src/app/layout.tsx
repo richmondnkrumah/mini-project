@@ -13,7 +13,7 @@ const layout = ({
       <body className="flex flex-col min-h-[100dvh]">
         {children}
         <SpeedInsights />
-        </body>
+      </body>
     </html>
   )
 }
