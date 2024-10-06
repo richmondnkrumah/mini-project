@@ -1,12 +1,17 @@
-import puppeteer, { Browser, Page } from 'puppeteer-core';
+import { Browser, Page } from 'puppeteer';
 import type { JOB } from '@/types/job';
+import puppeteer from 'puppeteer-extra'
+import StealthPlugin from 'puppeteer-extra-plugin-stealth'
+
+
+puppeteer.use(StealthPlugin())
 
 
 
 class WebScraper {
   private browser: Browser | null = null;
   async init(): Promise<void> {
-    this.browser = await puppeteer.launch({executablePath: '/usr/bin/google-chrome', headless: false}) }
+    this.browser = await puppeteer.launch({headless: true}) }
 
   async close(): Promise<void> {
     if (this.browser) {
